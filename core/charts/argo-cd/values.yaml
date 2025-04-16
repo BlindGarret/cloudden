@@ -1,0 +1,45 @@
+argo-cd:
+  server: 
+    extraArgs: 
+      - --insecure
+  configs:
+    cm:
+      exec.enabled: "true"
+      # Accounts
+      accounts.lroe: apiKey, login
+      accounts.lroe.enabled: "true"
+
+      accounts.jjarosh: apiKey, login
+      accounts.jjarosh.enabled: "true"
+
+      accounts.broe: apiKey, login
+      accounts.broe.enabled: "true"
+
+    rbac:
+      policy.csv: |
+        p, role:org-admin, applications, *, */*, allow
+        p, role:org-admin, clusters, get, *, allow
+        p, role:org-admin, repositories, get, *, allow
+        p, role:org-admin, repositories, create, *, allow
+        p, role:org-admin, repositories, update, *, allow
+        p, role:org-admin, repositories, delete, *, allow
+        p, role:org-admin, certificates, get, *, allow
+        p, role:org-admin, certificates, create, *, allow
+        p, role:org-admin, certificates, update, *, allow
+        p, role:org-admin, certificates, delete, *, allow
+        p, role:org-admin, projects, get, *, allow
+        p, role:org-admin, projects, create, *, allow
+        p, role:org-admin, projects, update, *, allow
+        p, role:org-admin, projects, delete, *, allow
+        p, role:org-admin, logs, get, *, allow
+        p, role:org-admin, exec, create, */*, allow
+
+        g, lroe, role:org-admin
+        g, jjarosh, role:org-admin
+        g, broe, role:org-admin
+
+  dex:
+    enabled: false
+
+  notifications:
+    enabled: false

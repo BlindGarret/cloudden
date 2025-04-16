@@ -1,0 +1,13 @@
+ingress-nginx:
+  crds:
+    validationFailurePolicy: Ignore
+  controller:
+    ingressClassResource:
+      name: nginx-internal
+      controllerValue: k8s.io/nginx-internal
+      default: false
+    extraArgs:
+      enable-ssl-passthrough: true
+    config:
+      "use-forwarded-headers": "true" # not true
+      "compute-full-forwarded-for": "true" # not true
