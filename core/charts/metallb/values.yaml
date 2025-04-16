@@ -1,0 +1,6 @@
+metallb:
+  controller:
+    admissionWebhooks:
+      enabled: false
+  crds:
+    validationFailurePolicy: Ignore

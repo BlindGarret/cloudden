@@ -1,0 +1,10 @@
+apiVersion: metallb.io/v1beta1
+kind: IPAddressPool
+metadata:
+  name: metallbaddresspool
+  namespace: metallb
+  annotations:
+    "helm.sh/hook": post-install,post-upgrade
+spec:
+  addresses:
+  - 192.168.0.25-192.168.35.
